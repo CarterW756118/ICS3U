@@ -54,6 +54,5 @@ if (x >= 1 and x <= 20):
       print("No!", y, "is not a factor of", x)
   else:
     print(y, "is outside of range. Cannot continue.")
-  
 else:
   print(x, "is outside of range. Cannot continue.")
