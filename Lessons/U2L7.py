@@ -2,7 +2,7 @@ import math
 
 print("%3s|%5s|%7s|%5s" % ("N", "SQR", "Cubes", "Roots"))
 print("---+-----+-------+-----")
-for n in range(10, 191, 15):
+for n in range(10, 200, 15):
   sqr = n**2
   cube = n**3
   root = round(math.sqrt(n), 2)
