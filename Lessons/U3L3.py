@@ -23,9 +23,9 @@ for i in range(len(items)):
 
 for i in range(len(sizes)):
   if sizes[i] == len(items[i]):
-    matches.append("True")
+    matches.append(True)
   else:
-    matches.append("False")
+    matches.append(False)
 
 for i in range(len(sizes)):
   print("%d %s, %s" % (sizes[i], items[i], matches[i]))
