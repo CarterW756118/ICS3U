@@ -1,5 +1,4 @@
 def validate(S):
-  valid = True
   for i in range(len(S)):
     if not (S[i] == "C" or S[i] == "G" or S[i] == "A" or S[i] == "T"):
       print("Not valid: %s found in position %d." % (S[i], i + 1))  
