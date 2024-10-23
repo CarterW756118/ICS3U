@@ -30,7 +30,10 @@ def factor(N):
 
 def min_perimeter(N):
     factors = factor(N)
-    x = max(factors)
+    x = 1
+    for num in factors:
+        if num > x:
+            x = num
     y = N / x
     perimeter = 2 * (x + y)
     print("Minimum perimeter is %d with demensions of %d x %d" % (perimeter, x, y))
@@ -38,6 +41,7 @@ def min_perimeter(N):
 print("Welcome to the school yearbook program!")
 done = False
 while not done:
+    print()
     valid = False
     num_photos = 0
     while not valid:
@@ -46,7 +50,7 @@ while not done:
             valid = True
             done = True
             print("Goodbye!")
-            exit()
+            break
         try:
             user_input_int = int(user_input)
             if user_input_int > 0:
@@ -56,6 +60,7 @@ while not done:
                 print("%d is not a valid number of photos." % user_input_int)
         except:
             print("%s is not a valid number of photos." % user_input)
-    min_perimeter(num_photos)
+    if not done:
+        min_perimeter(num_photos)
             
     
