@@ -78,7 +78,7 @@ while not done:
         # Runs if user_input could not be converted into int, meaning user input a string
         except:
             print("%s is not a valid number of photos." % user_input)
-    # Calls min_perimeter function is done is false (so it does not run if user input "done" before)
+    # Calls min_perimeter function if done is false (so it does not run if user input "done" before)
     if not done:
         min_perimeter(num_photos)
             
