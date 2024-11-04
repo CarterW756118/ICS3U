@@ -36,7 +36,7 @@ def factor(N):
     # Return factors list
     return factors
 
-# Finds the demensions and minimum perimeter for the number of photos
+# Finds the dimensions and minimum perimeter for the number of photos
 def min_perimeter(N):
     # Calls factor function and sets factors to the returned list
     factors = factor(N)
@@ -50,8 +50,8 @@ def min_perimeter(N):
     y = N / x
     # Calculates perimeter
     perimeter = 2 * (x + y)
-    # Prints perimeter and the demensions
-    print("Minimum perimeter is %d with demensions of %d x %d" % (perimeter, x, y))
+    # Prints perimeter and the dimensions 
+    print("Minimum perimeter is %d with dimensions of %d x %d" % (perimeter, x, y))
 
 # Prints welcome message
 print("Welcome to the school yearbook program!")
