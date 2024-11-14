@@ -1,9 +1,17 @@
+def modify(ln):
+    mod_string = ""
+    badChars = ['"', ',']
+    ln = ln.strip()
+    for c in ln:
+        if c not in badChars:
+            mod_string = mod_string + c
+    return mod_string
+
 filename = "C://Users/Carter/Downloads/smiley_emoji_mod.xpm"
 fh = open(filename, "r")
 
 colorData = fh.readline()
-colorData = colorData.strip()
-colorData = colorData.replace('"', '').replace(',', '')
+colorData = modify(colorData)
 rows, cols, numColors = colorData.split()
 
 rows = int(rows)
@@ -13,8 +21,7 @@ numColors = int(numColors)
 colorDefs = []
 for i in range(numColors):
     colorLine = fh.readline() 
-    colorLine = colorLine.strip()
-    colorLine = colorLine.replace('"', '').replace(',', '')
+    colorLine = modify(colorLine)
     sym, c, color = colorLine.split()
     if sym == '~':
         sym = " "
@@ -23,8 +30,7 @@ for i in range(numColors):
 imageData = []
 for i in range(rows):
     row = fh.readline()
-    row = row.strip()
-    row = row.replace('"', '').replace(',', '')
+    row = modify(row)
     rowArr = []
     for j in range(len(row)):
         color = row[j]
