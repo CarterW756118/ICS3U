@@ -7,7 +7,7 @@ def modify(ln):
             mod_string = mod_string + c
     return mod_string
 
-filename = "C://Users/Carter/Downloads/smiley_emoji_mod.xpm"
+filename = "smiley_emoji_mod.xpm"
 fh = open(filename, "r")
 
 colorData = fh.readline()
