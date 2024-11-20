@@ -18,15 +18,26 @@ def plotIt(T, x, y, d, color):
     T.pendown()
     T.dot(d, color)
     T.penup()
-    
-filename = "smiley_emoji_mod.xpm"
+
+def drawImage(img, pixel_size, rows, cols):
+    x_half = int(cols / 2)
+    y_half = int(rows / 2)
+    for x in range(-x_half, x_half):
+        for y in range(y_half - 1, -y_half + 1, -1):
+            plotIt(t, x * pixel_size, y * pixel_size, pixel_size, imageData[-y + y_half][x + x_half])
+
+filename = "rocky_bullwinkle_mod.xpm"
 fh = open(filename, "r")
 
 t.hideturtle() # prevents the plotter sprite from appearing in your image
 
 colorData = fh.readline()
 colorData = modify(colorData)
-rows, cols, numColors = colorData.split()
+rows, cols, numColors = (0,0,0)
+try:
+    rows, cols, numColors = colorData.split()
+except:
+    rows, cols, numColors, temp = colorData.split()
 
 rows = int(rows)
 cols = int(cols)
@@ -59,11 +70,4 @@ fh.close()
 print("Dimensions: %d x %d" % (rows, cols))
 print("Number of colors:", numColors)
 print("Colors:", colorDefs)
-pixel_size = 4
-cols -= 1 # <--- Temp
-x_half = int(cols / 2)
-y_half = int(rows / 2)
-for x in range(-x_half, x_half):
-    print("%d Percent Complete" % (x + x_half + 1 / cols * 100))
-    for y in range(-y_half, y_half):
-        plotIt(t, x * pixel_size, y * pixel_size, pixel_size, imageData[x + x_half][y + y_half])
+drawImage(imageData, 4, rows, cols)
