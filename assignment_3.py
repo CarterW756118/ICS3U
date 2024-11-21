@@ -20,11 +20,14 @@ def plotIt(T, x, y, d, color):
     T.penup()
 
 def drawImage(img, pixel_size, rows, cols):
-    x_half = int(cols / 2)
-    y_half = int(rows / 2)
-    for x in range(-x_half, x_half):
-        for y in range(y_half - 1, -y_half + 1, -1):
-            plotIt(t, x * pixel_size, y * pixel_size, pixel_size, imageData[-y + y_half][x + x_half])
+    x_half = int(-cols / 2)
+    y_half = int(-rows / 2)
+    for x in range(len(imageData)):
+        y_half += 1
+        for y in range(len(imageData[x])):
+            plotIt(t, x_half * pixel_size, -y_half * pixel_size, pixel_size, imageData[x][y])
+            x_half += 1
+        x_half = int(cols / 2) * -1
 
 filename = "rocky_bullwinkle_mod.xpm"
 fh = open(filename, "r")
