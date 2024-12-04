@@ -28,9 +28,9 @@ def drawImage(img, pixel_size, rows, cols, x_rot, y_rot):
         for y in range(len(img[x])):
             plotIt(t, x_half * pixel_size * x_rot, -y_half * pixel_size * y_rot, pixel_size, img[x][y])
             x_half += 1
-        x_half = int(cols / 2) * -1
+        x_half = int(-cols / 2)
 
-def getImageData(fh, rows, cols, colorDefs):
+def getImageData(fh, rows, colorDefs):
     imageData = []
     for i in range(rows):
         row = fh.readline()
@@ -45,7 +45,7 @@ def getImageData(fh, rows, cols, colorDefs):
         imageData.append(rowArr)
     return imageData
 
-def getColorData(fh, rows, cols):
+def getColorData(fh):
     colorDefs = []
     for i in range(numColors):
         colorLine = fh.readline() 
@@ -85,24 +85,24 @@ fh = open(filename, "r")
 
 colorData = fh.readline()
 colorData = modify(colorData)
-rows, cols, numColors = (0,0,0)
+cols, rows, numColors = (0,0,0)
 try:
-    rows, cols, numColors = colorData.split()
+    cols, rows, numColors = colorData.split()
 except:
-    rows, cols, numColors, temp = colorData.split()
+    cols, rows, numColors, temp = colorData.split()
 
 rows = int(rows)
 cols = int(cols)
 numColors = int(numColors)
 
-colorDefs = getColorData(fh, rows, cols)
-imageData = getImageData(fh, rows, cols, colorDefs)
+colorDefs = getColorData(fh)
+imageData = getImageData(fh, rows, colorDefs)
 fh.close()
 
 print("\nDimensions: %d x %d" % (rows, cols))
 print("Number of colors:", numColors)
 print("Colors:", colorDefs)
 if rotate:
-    drawImage(imageData, 4, rows, cols, -1, -1)
+    drawImage(imageData, 3, rows, cols, -1, -1)
 else:
-    drawImage(imageData, 4, rows, cols, 1, 1)
+    drawImage(imageData, 3, rows, cols, 1, 1)
