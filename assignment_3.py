@@ -186,6 +186,15 @@ while not valid:
         filename = input("Enter the file name: ")
         valid = True
 
+fh = None
+try:
+    # Open the chosen file for reading
+    fh = open(filename, "r")
+except:
+    # File is not found and exit the program
+    print("File not found.")
+    exit()
+
 # Set valid to false
 valid = False
 # Loop until a valid option is chosen
@@ -201,9 +210,6 @@ while not valid:
     elif user_input.lower() == 'n':
         # Set valid to true
         valid = True
-
-# Open the chosen file for reading
-fh = open(filename, "r")
 
 # Read the first line of the file
 colorData = fh.readline()
@@ -240,3 +246,4 @@ if rotate:
     drawImage(imageData, 3, rows, cols, -1, -1)
 else:
     drawImage(imageData, 3, rows, cols, 1, 1)
+turtle.update()
