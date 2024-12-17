@@ -1,3 +1,12 @@
+"""
+Author : Carter Wells
+Student Number: 756118
+Revison date : 17 December 2024
+Program : Reading files and searching for data
+Description : 
+VARIABLE DICTIONARY :
+    
+"""
 def mergeSort(arr, arr2, l, r):
     if l < r:
         # Same as (l+r)//2, but avoids overflow
@@ -58,9 +67,12 @@ def merge(year, month, day):
         months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
         line_int = ""
         line_int += year
-        month_str = str(months.index(month.lower()) + 1)
-        if len(month_str) == 1:
-            month_str = "0" + month_str
+        month_str = ""
+        for i in range(len(months)):
+            if months[i] == month.lower():
+                month_str += str(i + 1)
+                if len(month_str) == 1:
+                    month_str = "0" + month_str
         line_int += month_str
         line_int += day
         return(int(line_int))
