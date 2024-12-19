@@ -3,14 +3,45 @@ Author : Carter Wells
 Student Number: 756118
 Revison date : 17 December 2024
 Program : Reading files and searching for data
-Description : 
+Description : Reads Wordle data from a file and allows the user to search for specific words or dates. 
 VARIABLE DICTIONARY :
-    
+    filename: str - Name of the file containing Wordle data
+    fh: file object - File handle for reading the Wordle data file
+    lines: list - List of lines read from the file
+    words: list - List to store words from the file
+    dates: list - List to store dates from the file
+    line: str - A single line read from the file
+    month: str - Month component of the date
+    day: str - Day component of the date
+    year: str - Year component of the date
+    word: str - Word from the file
+    myDate: int - Merged date in integer format
+    startDate: int - The earliest date in the dates list
+    endDate: int - The latest date in the dates list
+    original_dates: list - Copy of the dates list to maintain original order
+    original_words: list - Copy of the words list to maintain original order
+    valid: bool - Flag to validate user input
+    userOption: str - User's choice for search option
+    userInput: str - User's input word for search
+    date: int - Date corresponding to the user's input word
+    year: str - User's input year for date search
+    month: str - User's input month for date search
+    day: str - User's input day for date search
+"""
+
+"""
+Function to perform merge sort on two arrays.
+Parameters:
+    arr (list): Array to be sorted.
+    arr2 (list): Second array to be sorted.
+    l (int): Left index of the subarray.
+    r (int): Right index of the subarray.
 """
 def mergeSort(arr, arr2, l, r):
+    # Check if the subarray has more than one element
     if l < r:
-        # Same as (l+r)//2, but avoids overflow
-        # for large l and h
+        # Find the middle point to divide the array into two halves
+        # Avoids potential overflow for large values of l and r
         m = l + (r - l) // 2
         
         # Sort first and second halves
@@ -18,6 +49,15 @@ def mergeSort(arr, arr2, l, r):
         mergeSort(arr, arr2, m + 1, r)
         mergeSortMerge(arr, arr2, l, m, r)
 
+"""
+Function to merge two sorted arrays.
+Parameters:
+    arr (list): Array to be sorted.
+    arr2 (list): Second array to be sorted.
+    l (int): Left index of the subarray.
+    m (int): Middle index of the subarray.
+    r (int): Right index of the subarray.
+"""
 def mergeSortMerge(arr, arr2, l, m, r):
     n1 = m - l + 1
     n2 = r - m
@@ -62,6 +102,13 @@ def mergeSortMerge(arr, arr2, l, m, r):
         j += 1
         k += 1 
 
+"""
+Function to merge year, month, and day into a single integer.
+Parameters:
+    year (str): Year component of the date.
+    month (str): Month component of the date.
+    day (str): Day component of the date.
+"""
 def merge(year, month, day):
     try:
         months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
@@ -79,13 +126,25 @@ def merge(year, month, day):
     except:
         return 0
 
+"""
+Function to search for a word or date in a sorted array.
+Parameters:
+    A (str): Word or date to be searched.
+    arr1 (list): Array to be searched.
+    arr2 (list): Second array to return result.
+"""
 def isMatch(A, arr1, arr2):
     index = binarySearch(arr1, A)
     if index != -1:
         return arr2[index]
     return 0
 
-# Binary search function to find the index of x in arr
+"""
+Function to perform binary search on a sorted array.
+Parameters:
+    arr (list): Array to be searched.
+    x (int): Element to be searched.
+"""
 def binarySearch(arr, x):
     l, r = 0, len(arr) - 1
     while l <= r:
