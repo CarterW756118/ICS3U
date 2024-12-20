@@ -191,6 +191,9 @@ for line in lines:
     # Append the word to the words list
     words.append(word)
 
+# Close the file
+fh.close()
+
 # Get the start and end dates from the dates list
 startDate = dates[0]
 endDate = dates[len(dates) - 1]
