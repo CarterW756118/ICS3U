@@ -30,12 +30,12 @@ VARIABLE DICTIONARY :
 """
 
 """
-Function to perform merge sort on two arrays.
+Function to perform merge sort on two arrays
 Parameters:
-    arr (list): Array to be sorted.
-    arr2 (list): Second array to be sorted.
-    l (int): Left index of the subarray.
-    r (int): Right index of the subarray.
+    arr (list): Array to be sorted
+    arr2 (list): Second array to be sorted
+    l (int): Left index of the subarray
+    r (int): Right index of the subarray
 """
 def mergeSort(arr, arr2, l, r):
     # Check if the subarray has more than one element
@@ -50,13 +50,13 @@ def mergeSort(arr, arr2, l, r):
         mergeSortMerge(arr, arr2, l, m, r)
 
 """
-Function to merge two sorted arrays.
+Function to merge two sorted arrays
 Parameters:
-    arr (list): Array to be sorted.
-    arr2 (list): Second array to be sorted.
-    l (int): Left index of the subarray.
-    m (int): Middle index of the subarray.
-    r (int): Right index of the subarray.
+    arr (list): Array to be sorted
+    arr2 (list): Second array to be sorted
+    l (int): Left index of the subarray
+    m (int): Middle index of the subarray
+    r (int): Right index of the subarray
 """
 def mergeSortMerge(arr, arr2, l, m, r):
     n1 = m - l + 1
@@ -101,11 +101,11 @@ def mergeSortMerge(arr, arr2, l, m, r):
         k += 1 
 
 """
-Function to merge year, month, and day into a single integer.
+Function to merge year, month, and day into a single integer
 Parameters:
-    year (str): Year component of the date.
-    month (str): Month component of the date.
-    day (str): Day component of the date.
+    year (str): Year component of the date
+    month (str): Month component of the date
+    day (str): Day component of the date
 """
 def merge(year, month, day):
     try:
@@ -132,11 +132,11 @@ def merge(year, month, day):
         return 0
 
 """
-Function to search for a word or date in a sorted array.
+Function to search for a word or date in a sorted array
 Parameters:
-    A (str): Word or date to be searched.
-    arr1 (list): Array to be searched.
-    arr2 (list): Second array to return result.
+    A (str): Word or date to be searched
+    arr1 (list): Array to be searched
+    arr2 (list): Second array to return result
 """
 def isMatch(A, arr1, arr2):
     # Set index to returned value of binarySearch
@@ -147,10 +147,10 @@ def isMatch(A, arr1, arr2):
     return 0
 
 """
-Function to perform binary search on a sorted array.
+Function to perform binary search on a sorted array
 Parameters:
-    arr (list): Array to be searched.
-    x (int): Element to be searched.
+    arr (list): Array to be searched
+    x (int): Element to be searched
 """
 def binarySearch(arr, low, high, x):
     # Check base case
@@ -208,6 +208,7 @@ mergeSort(words, dates, 0, len(words) - 1)
 print("Welcome to the Wordle Database!")
 valid = False
 userOption = ""
+# Loop until valid input
 while not valid:
     # Prompt the user to choose an option
     userOption = input("Enter w if you are looking for a word, or d for a word on a certain date: ")
@@ -218,6 +219,7 @@ while not valid:
 
 if userOption == "w":
     valid = False
+    # Loop until valid input
     while not valid:
         # Prompt the user to enter a word
         userInput = input("What word are you looking for? ").upper()
@@ -231,6 +233,7 @@ if userOption == "w":
         print("%s was not found in the database." % userInput)
 elif userOption == "d":
     valid = False
+    # Loop until valid input
     while not valid:
         # Prompt the user to enter a date
         year = input("Enter the year: ")
@@ -243,10 +246,14 @@ elif userOption == "d":
         date = merge(year, month, day)
         if date != 0:
             valid = True
+    # Check if the date matches any date in the database and get the corresponding word
     word = isMatch(date, original_dates, original_words)
+    # If the date is earlier than the start date
     if date < startDate:
         print("%d is too early. No wordles occured before %d. Enter a later date." % (date, startDate))
+    # If the date is later than the end date
     elif date > endDate:
         print("%d is too recent. Our records only go as late as %d. Please enter an earlier date." % (date, endDate))
+    # If a word was found for the given date
     if word:
         print("The word entered on %d was %s." % (date, word))
