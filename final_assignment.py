@@ -136,6 +136,6 @@ for i in range(len(expiry_dates)):
     expired_text = "RENEW IMMEDIATELY"
     if expiry_dates[i] < 202501:
         expired_text = "EXPIRED"
-    print("%-35s %-15s %-20s %-8s %-15s" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
-    output_file.write("%-35s %-15s %-20s %-8s %-15s\n" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    print("%-35s %-15s %-20s %-10s %-15s" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
+    output_file.write("%-35s %-15s %-20s %-10s %-15s\n" % (names[i], cc_types[i], cc_nums[i], expiry_dates[i], expired_text))
 output_file.close()
